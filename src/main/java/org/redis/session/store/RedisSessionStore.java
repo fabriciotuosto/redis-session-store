@@ -92,10 +92,11 @@ public class RedisSessionStore extends StoreBase implements Store{
 
 	private Jedis getJedis() throws UnknownHostException, IOException{
 		Jedis local = jedis;
-		if(jedis == null || !jedis.isConnected()){
+		if(local == null || !local.isConnected()){
 			synchronized (this) {
-				if(jedis == null || !jedis.isConnected()){
-					local = jedis = createClient();
+				local = jedis;
+				if(local == null || !local.isConnected()){
+					jedis = local = createClient();
 				}
 			}
 		}
