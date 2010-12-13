@@ -1,0 +1,11 @@
+Configuration necesary to use this project under tomcat, just edit context.xml
+and add the following XML Elemnt inside Context
+
+	<Manager className="org.apache.catalina.session.PersistentManager" saveOnRestart="true" maxActiveSessions="1" minIdleSwap="1" maxIdleSwap="1" maxIdleBackup="1">
+	    <Store className="org.redis.session.store.RedisSessionStore" 
+				host="localhost"
+				port="6379"
+				password=""
+				database="7"
+	    />
+	</Manager>
