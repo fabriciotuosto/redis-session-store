@@ -106,7 +106,7 @@ public class RedisSessionStore extends StoreBase implements Store{
 		LOGGER.info("Creating new jedis client");
 		Jedis client = new Jedis(host, port);
 		client.select(database);
-		if(password != null && !"".equals(password)){
+		if(isNotEmpty(password)){
 			client.auth(password);
 		}
 		client.connect();
